@@ -5,12 +5,12 @@ describe("auth form", () => {
         await FormPage.open();
         await FormPage.username.setValue("foo");
         await FormPage.password.setValue("bar");
-        await FormPage.submit();
-
-        await FormPage.flash.waitForDisplayed();
         await FormPage.flash.saveScreenshot(
             "./screenshots/invalidUsername.png"
         );
+        await FormPage.submit();
+
+        await FormPage.flash.waitForDisplayed();
         await expect(FormPage.flash).toHaveTextContaining(
             "Your username is invalid!"
         );
@@ -19,8 +19,8 @@ describe("auth form", () => {
     it("should allow access with correct creds", async () => {
         await FormPage.open();
         await FormPage.username.setValue("tomsmith");
-        await FormPage.password.saveScreenshot("./screenshots/password.png");
         await FormPage.password.setValue("SuperSecretPassword!");
+        await FormPage.password.saveScreenshot("./screenshots/password.png");
         await FormPage.submit();
 
         await FormPage.flash.waitForDisplayed();
