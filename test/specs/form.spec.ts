@@ -5,12 +5,12 @@ describe("auth form", () => {
         await FormPage.open();
         await FormPage.username.setValue("foo");
         await FormPage.password.setValue("bar");
-        await FormPage.flash.saveScreenshot(
-            "./screenshots/invalidUsername.png"
-        );
         await FormPage.submit();
 
         await FormPage.flash.waitForDisplayed();
+        await FormPage.flash.saveScreenshot(
+            "./screenshots/invalidUsername.png"
+        );
         await expect(FormPage.flash).toHaveTextContaining(
             "Your username is invalid!"
         );
