@@ -24,6 +24,4 @@ jobs:
                   path: logs
 
             - name: Argos
-              env:
-                  ARGOS_TOKEN: ${{ secrets.ARGOS_TOKEN }}
               run: npm exec argos upload ./screenshots
